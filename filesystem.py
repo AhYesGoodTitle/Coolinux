@@ -1,0 +1,3 @@
+filesystem = {
+    "/": ['bin', 'etc', 'home']
+}
