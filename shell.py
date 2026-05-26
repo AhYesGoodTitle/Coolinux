@@ -30,40 +30,64 @@ def account_creation():
                 continue
             else:
                 account_created = True
-                print('')
-                print('Account created successfully. Now sign in...')
-                print ('')
                 break
-
-def login():
-    global logged_in
-    if account_created == True:
-        command = input('Enter username: ')
-        while True:
-            if command == user:
-                command = input(f'Enter password for {user}: ')
-                if command == password:
-                    logged_in = True
-                    break
-                else:
-                    print(f'Incorrect password for: "{user}"')
-                    command = input(f'Enter password for {user}: ')
-            else:
-                print(f'Username: {command} not found')
-                command = input('Enter username: ')
 
 
 # Create account; *add login aswell*
-print('''
-Welcome to Coolinux :3
-This is a unix inspired "VM" made in python!
-Check the git page for more technical information, disclaimers, and source code.
-
-You can edit the startup message in /etc/motd
-''')
+print(filesystem['/']['etc']['motd'][0].strip())
 time.sleep(0.5)
 account_creation()
 time.sleep(0.5)
-login()
 
 
+'''----Actual Shell lmao----'''
+#Pre recs
+current_directory_display = '/'
+current_directory = filesystem['/']
+
+# Command split, and print current directory function
+def shell():
+    global cmd
+    # print(" ".join(my_list))
+    command = input(f'{user}@Coolinux:{current_directory_display} $ ')
+    if command == '':
+        shell()
+    else:
+        cmd = command.split()
+        cmd_list_func()
+
+
+#----Cmd execution after finding in dictionary (below)----
+
+def xcute_cmd_cd():
+    global current_directory, current_directory_display
+    if len(cmd) < 2:
+        current_directory = filesystem['/']
+        current_directory_display = '/'
+    elif cmd[1] in current_directory:  #impliment the current directory display, and make better logic ;-;
+        current_directory = filesystem['/'][cmd[1]]
+        print(current_directory)
+    else:
+        print(f'cd: {cmd[1]}: No such file or directory')
+        print(f"current_directory: {current_directory}")
+        print(f"cmd[1]: {cmd[1]}")
+        print(list(current_directory.keys()))
+
+
+#------------------
+
+cmd_list_dic = {
+    "cd": xcute_cmd_cd
+}
+
+def cmd_list_func():
+    if cmd[0] in cmd_list_dic:
+        cmd_list_dic[cmd[0]]()
+    else:
+        print(f'{cmd[0]}: Command not found')
+
+
+
+
+while True:
+    shell()
