@@ -1,6 +1,6 @@
 # ----Welcome to Coolinux 😎----  
-### **Collinux is a unix inspired 'virtual machine' built in python.**  
-###### *Please note that everything is in very early development ;-;*  
+### **A unix inspired 'virtual machine' built in python.**  
+###### *Please note that everything is in VERY early development ;-;*  
 
 <br>  
 
