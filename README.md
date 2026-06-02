@@ -5,7 +5,7 @@
 
 ## Disclaimers  
 1. **This is a high school project**. Expect logic to not make sense or be broken.  
-2. This is **not** a virtual machine nor does the internal code reflect how a true Unix machine works (read technical information)
+2. This is **not** a virtual machine, nor does the internal code reflect how a true Unix machine works (read technical information).
 4. Coolinux is still in **very** early development. Making a git page was part of my mark, so do not expect a product that could even be considered an alpha build.  
 
 ## How to run  
