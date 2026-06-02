@@ -12,4 +12,4 @@
 Put filesystem.py and shell.py in the same folder. Then run shell.py in your terminal of choice :)  
 
 ## Technical information  
-Coolinux is highly inspired by Unix system such as Alpine Linux, Debian, and Fedora. It is **not** a virtual machine in the sense that it **does not** emulate a kernel, cpu, etc. I don't yet understand those concepts, but I would love to make a version 2 with actual emulation. Treat it closer to the Grub terminal that an actual Linux distro.
+Coolinux is highly inspired by Unix system such as Alpine Linux, Debian, and Fedora. It is **not** a virtual machine in the sense that it **does not** emulate a kernel, cpu, etc. I don't yet understand those concepts, but I would love to make a version 2 with actual emulation. Treat it closer to the Grub terminal that an actual Linux distro. Thanks :3
