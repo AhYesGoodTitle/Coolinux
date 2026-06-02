@@ -63,11 +63,18 @@ def xcute_cmd_cat(): # Also need to add functionality when no file is specified 
 
 def xcute_cmd_newcd():
     global current_directory, current_directory_display
+    print('Waring! This command may result in an error. It is not done.')
     if len(cmd) < 2:
         current_directory = filesystem['/']
         current_directory_display = '/'
-    elif cmd[1] in filesystem:
-        print('uhhh how do I get this to work ;-;')
+
+    elif len(cmd) == 2:
+        path = cmd[1]
+        parts = path.split('/')
+        #for 
+    #elif cmd[1] in filesystem:
+        
+
 
 def xcute_cmd_cd(): # Fix: cd /bin, INSTEAD OF cd bin | MAKE SIMILAR TO ACTUAL UNIX WHERE ITS NOT 1 AT A TIME: /etc -> /etc/motd, -**NOT etc -> motd**-
     global current_directory, current_directory_display
@@ -87,8 +94,9 @@ def xcute_cmd_ls():
         items = list(current_directory.keys())
         print('  '.join(items))
 
-def xcute_cmd_mkdir():
+def xcute_cmd_mkdir():                                                  #TODO
     global current_directory, current_directory_display, filesystem
+    filesystem.update()
     
 
 
@@ -120,6 +128,8 @@ cmd_list_dic = {
 }
 
 def cmd_list_func():
+    #if cmd[0] in filesystem['/']['bin']:       #This is for bin implimentation (for Lilly: see notes.txt)
+        #filesystem['/']['bin'][cmd[0]]()
     if cmd[0] in cmd_list_dic:
         cmd_list_dic[cmd[0]]()
     else:
