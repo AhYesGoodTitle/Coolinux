@@ -20,13 +20,7 @@ def account_creation():
 
         print('')
         password = input(f'Please enter a strong password for {user}: ')
-        while True:
-            if password == "":
-                password = input(f'Please enter a strong password for {user}: ')
-                continue
-            else:
-                account_created = True
-                break
+        account_created = True
 
 
 account_created = False
@@ -61,53 +55,50 @@ def xcute_cmd_cat(): # Also need to add functionality when no file is specified 
         print("Sorry, I haven't added full cat functionality yet :(")
         print('cat: usage: cat [FILE]')
 
-def xcute_cmd_newcd():
+def xcute_cmd_cd(): #Need to stop user from cding into file; only allow directories | Line 70: Only checks parent directory
     global current_directory, current_directory_display
-    #print('Waring! This command may result in an error. It is still under development')
-    #for x in y if...
+    #c_d_d_archive = current_directory_display
+
     if len(cmd) < 2:
         current_directory = filesystem['/']
         current_directory_display = '/'
 
     elif len(cmd) == 2:
         parts = [p for p in cmd[1].split('/') if p]
+        current_directory = filesystem['/']
         for p in parts:
-            if 'parts' in current_directory:
-                current_directory = filesystem['/'][p]
+            if p in current_directory:
+                current_directory = current_directory[p]
+                current_directory_display = cmd[1]
                 break
             else:
-                print(f'cd: {parts.strip()}: No such file or directory')
-                break
+                print(f'cd: {parts}: No such file or directory')
+                break    
 
-        print(parts)
-        current_directory_display = current_directory_display + cmd[1]
-    #elif cmd[1] in filesystem:
-        
+    else:
+        print('cd: too many arguments') 
 
+#def xcute_cmd_cd(): #Backup CD
+    #global current_directory, current_directory_display
 
-def xcute_cmd_cd(): # Fix: cd /bin, INSTEAD OF cd bin | MAKE SIMILAR TO ACTUAL UNIX WHERE ITS NOT 1 AT A TIME: /etc -> /etc/motd, -**NOT etc -> motd**-
-    global current_directory, current_directory_display
-
-    if len(cmd) < 2:
-        current_directory = filesystem['/']
-        current_directory_display = '/'
-    elif cmd[1] in current_directory:
-        current_directory = current_directory[cmd[1]]
-        current_directory_display = current_directory_display + cmd[1] + '/'
+    #if len(cmd) < 2:
+        #current_directory = filesystem['/']
+        #current_directory_display = '/'
+    #elif cmd[1] in current_directory:
+        #current_directory = current_directory[cmd[1]]
+        #current_directory_display = current_directory_display + cmd[1] + '/'
     
-    else:  
-        print(f'cd: {cmd[1]}: No such file or directory')
+    #else:  
+        #print(f'cd: {cmd[1]}: No such file or directory')
 
 def xcute_cmd_ls():
     if len(cmd) < 2:
         items = list(current_directory.keys())
         print('  '.join(items))
 
-def xcute_cmd_mkdir():                                                  #TODO
+def xcute_cmd_mkdir(): #TODO
     global current_directory, current_directory_display, filesystem
     filesystem.update()
-    
-
 
 def xcute_cmd_pwd():
     if len(cmd) > 1:
@@ -128,7 +119,6 @@ def xcute_cmd_whoami():
 
 cmd_list_dic = {
     'cat': xcute_cmd_cat,            
-    'newcd': xcute_cmd_newcd,
     "cd": xcute_cmd_cd,
     "ls": xcute_cmd_ls,
     "pwd": xcute_cmd_pwd,
