@@ -1,9 +1,11 @@
 filesystem = {
     '/': {
-        'bin': {
+        'Documents': {
             'readme.txt': ['Hello, World!']
         },
-
+        'bin': {
+            
+        },
 
         'etc': {
             'motd': ['''
