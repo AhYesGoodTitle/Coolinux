@@ -63,15 +63,24 @@ def xcute_cmd_cat(): # Also need to add functionality when no file is specified 
 
 def xcute_cmd_newcd():
     global current_directory, current_directory_display
-    print('Waring! This command may result in an error. It is not done.')
+    #print('Waring! This command may result in an error. It is still under development')
+    #for x in y if...
     if len(cmd) < 2:
         current_directory = filesystem['/']
         current_directory_display = '/'
 
     elif len(cmd) == 2:
-        path = cmd[1]
-        parts = path.split('/')
-        #for 
+        parts = [p for p in cmd[1].split('/') if p]
+        for p in parts:
+            if 'parts' in current_directory:
+                current_directory = filesystem['/'][p]
+                break
+            else:
+                print(f'cd: {parts.strip()}: No such file or directory')
+                break
+
+        print(parts)
+        current_directory_display = current_directory_display + cmd[1]
     #elif cmd[1] in filesystem:
         
 
