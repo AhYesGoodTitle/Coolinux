@@ -1,12 +1,13 @@
+<div align='center'>
 # ----Welcome to Coolinux 😎----  
 ### **A unix inspired 'virtual machine' built in python.**   
 
 <br>  
 
 ## Disclaimers  
-1. **This is a high school project**. Expect logic to not make sense or be broken.  
+1. **This is a stupid project**. Expect logic to not make sense or be broken.  
 2. This is **not** a virtual machine, nor does the internal code reflect how a true Unix machine works (read technical information).
-4. Coolinux is still in **very** early development. Making a git page was part of my mark, so do not expect a product that could even be considered an alpha build.  
+4. Coolinux is REALLY stupid. It stemmed from a programming course where I had to make a Git repo. I resurrected it because I was bored. 
 
 ## How to run  
 Put filesystem.py and shell.py in the same folder. Then run shell.py in your terminal of choice :)  
