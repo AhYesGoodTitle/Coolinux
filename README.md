@@ -1,6 +1,7 @@
 <div align='center'>
 <h1>----Welcome to Coolinux 😎----</h1>
 <h3><b>A unix inspired 'virtual machine' built in python.</b></h3>  
+</div>
 
 <br>  
 
